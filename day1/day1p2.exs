@@ -11,3 +11,4 @@ end)
 |> Enum.sort
 |> Enum.take(-3)
 |> Enum.reduce(&Kernel.+/2)
+|> IO.puts

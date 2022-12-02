@@ -9,3 +9,4 @@ File.read!("day1.txt")
   |> Enum.reduce(&Kernel.+/2)
 end)
 |> Enum.reduce(&max/2)
+|> IO.puts
