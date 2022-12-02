@@ -1,3 +1,5 @@
+#!/usr/bin/env elixir
+
 File.read!("day1.txt")
 |> String.trim
 |> String.split("\n\n")
