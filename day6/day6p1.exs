@@ -8,11 +8,10 @@ defmodule Day6 do
     |> String.graphemes()
     |> Enum.chunk_every(4, 1, :discard)
     |> Enum.with_index(4)
-    |> Enum.reduce([], fn {x, index}, acc ->
-      if has_duplicates?(x), do: acc, else: [ index | acc]
+    |> Enum.reduce_while(:nil, fn {x, index}, acc ->
+      if has_duplicates?(x), do: {:cont, acc}, else: {:halt, index}
     end)
-    |> List.last()
-    |> IO.inspect()
+    |> IO.puts()
   end
 
   defp has_duplicates?(list), do: length(Enum.uniq(list)) != length(list)
