@@ -32,7 +32,7 @@ defmodule Day8 do
     |> List.flatten()
     |> Enum.filter(&(&1))
     |> length()
-    |> IO.puts
+    |> IO.puts()
 
     # Part 2
     grid
@@ -46,8 +46,7 @@ defmodule Day8 do
     end)
     |> List.flatten()
     |> Enum.max()
-    |> IO.inspect()
-
+    |> IO.puts()
   end
 
   def score(grid, transpose, x, y, height) do
@@ -62,31 +61,23 @@ defmodule Day8 do
     left =
       vertical
       |> Enum.take(x)
-    left_scored =
-      left
       |> Enum.reverse()
       |> visibility_score(height)
     right =
       vertical
       |> Enum.take(-(size-x)+1)
-    right_scored =
-      right
       |> visibility_score(height)
     top =
       horizontal
       |> Enum.take(y)
-    top_scored =
-      top
       |> Enum.reverse()
       |> visibility_score(height)
     bottom =
       horizontal
       |> Enum.take(-(size-y)+1)
-    bottom_scored =
-      bottom
       |> visibility_score(height)
 
-    left_scored * right_scored * top_scored * bottom_scored
+    left * right * top * bottom
   end
 
   def max_index(list, _height) when length(list) == 0 do
@@ -137,7 +128,7 @@ defmodule Day8 do
 
   def transpose(rows) do
     rows
-    |> List.zip
+    |> List.zip()
     |> Enum.map(&Tuple.to_list/1)
   end
 end
